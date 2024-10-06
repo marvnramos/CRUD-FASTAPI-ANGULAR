@@ -1,0 +1,35 @@
+<div class="container mx-auto px-4">
+  <h1 class="text-3xl font-bold m-4 p-5 w-full text-center  ">CRUD | Películas</h1>
+
+  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-6" [routerLink]="['/movies/new']">
+    Agregar Película
+  </button>
+
+  <table class="min-w-full bg-white shadow-md rounded-lg">
+    <!-- Encabezados de la tabla -->
+    <thead>
+      <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+        <th class="py-3 px-6 text-left">ID</th>
+        <th class="py-3 px-6 text-left">Nombre</th>
+        <th class="py-3 px-6 text-left">Descripción</th>
+        <th class="py-3 px-6 text-left">Actores</th>
+        <th class="py-3 px-6 text-left">Director</th>
+        <th class="py-3 px-6 text-left">Acciones</th>
+      </tr>
+    </thead>
+    <!-- Contenido de la tabla -->
+    <tbody class="text-gray-600 text-sm font-light">
+      <tr *ngFor="let movie of dataSource.data" class="border-b border-gray-200 hover:bg-gray-100">
+        <td class="py-3 px-6 text-left whitespace-nowrap">{{ movie.id }}</td>
+        <td class="py-3 px-6 text-left">{{ movie.name }}</td>
+        <td class="py-3 px-6 text-left">{{ movie.description }}</td>
+        <td class="py-3 px-6 text-left">{{ movie.actors }}</td>
+        <td class="py-3 px-6 text-left">{{ movie.director }}</td>
+        <td class="py-3 px-6 text-left ">
+          <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 m-1 rounded w-full" (click)="deleteMovie(movie.id)">Eliminar</button>
+          <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 m-1 rounded w-full" [routerLink]="['/movies/edit', movie.id]">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
